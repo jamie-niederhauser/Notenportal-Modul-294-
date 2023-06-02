@@ -1,0 +1,32 @@
+<div>
+  <form (ngSubmit)="save(schuelerForm.value)" [formGroup]="schuelerForm">
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input appAutofocus formControlName="name" matInput maxlength="200" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nachname</mat-label>
+    <input type="text" formControlName="nachname" matInput required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Klasse</mat-label>
+    <mat-select
+      formControlName="klasse"
+      [compareWith]="compareOptions">
+      <mat-option
+        *ngFor="let klasse of klasse"
+        [value]="klasse">
+        {{ klasse.klassenname }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-flat-button color="disabled" type="reset" (click)="back()">Abbrechen</button>
+  <button mat-raised-button color="primary" type="submit">Speichern</button>
+
+</form>
+</div>
+

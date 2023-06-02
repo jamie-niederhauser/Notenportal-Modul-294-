@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 import { environment } from './environments/environment';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
@@ -31,6 +32,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { KlasseDetailsComponent } from './components/klasse-details/klasse-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { SchuelerDetailsComponent } from './components/schueler-details/schueler-details.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV-Realm',
@@ -64,10 +66,12 @@ export function storageFactory(): OAuthStorage {
     NotenComponent,
     IsInRolesDirective,
     ConfirmDialogComponent,
-    KlasseDetailsComponent
+    KlasseDetailsComponent,
+    SchuelerDetailsComponent
   ],
   imports: [
     BrowserModule,
+    MatSelectModule,
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,

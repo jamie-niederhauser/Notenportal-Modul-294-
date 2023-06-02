@@ -7,6 +7,8 @@ import { AppRoles } from './app.roles';
 import { HomeComponent } from './components/home/home.component';
 import { NotenComponent } from './components/noten/noten.component';
 import { KlasseDetailsComponent } from './components/klasse-details/klasse-details.component';
+import { SchuelerComponent } from './components/schueler/schueler.component';
+import { SchuelerDetailsComponent } from './components/schueler-details/schueler-details.component';
 
 const routes: Routes = [
   {
@@ -19,12 +21,12 @@ const routes: Routes = [
     }
   },
   {
-    path: 'noten',
-    component: NotenComponent,
+    path: 'schueler',
+    component: SchuelerComponent,
     canActivate: [AppAuthGuard],
     data: {
       roles: [AppRoles.Read],
-      pagetitle: 'Alle Noten'
+      pagetitle: 'Alle Schuler'
     }
   },{
     path: 'klasse/:id',
@@ -43,6 +45,24 @@ const routes: Routes = [
     data: {
       roles: [AppRoles.Read],
       pagetitle: 'Alle Klassen'
+    }
+  },
+  {
+    path: 'schueler-details',
+    component: SchuelerDetailsComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Read],
+      pagetitle: 'Alle Schueler'
+    }
+  },{
+    path: 'schuler/:id',
+    pathMatch: 'full',
+    component: SchuelerDetailsComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Update],
+      pagetitle: 'Klasse bearbeiten'
     }
   },
 ];
