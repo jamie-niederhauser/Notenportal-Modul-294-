@@ -10,12 +10,31 @@ import { KlasseDetailsComponent } from './components/klasse-details/klasse-detai
 import { SchuelerComponent } from './components/schueler/schueler.component';
 import { SchuelerDetailsComponent } from './components/schueler-details/schueler-details.component';
 import { SchulfachComponent } from './components/schulfach/schulfach.component';
+import { SchulfachDetailsComponent } from './components/schulfach-details/schulfach-details.component';
+import { NoAccessComponent } from './pages/no-access/no-access.component';
 
 const routes: Routes = [
   {
     path: 'klasse',
     component: KlasseComponent,
     canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Read],
+      pagetitle: 'Alle Klassen'
+    }
+  },{
+    path: 'schulfach/:id',
+    pathMatch: 'full',
+    component: SchulfachDetailsComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Update],
+      pagetitle: 'Klasse bearbeiten'
+    }
+  },
+  {
+    path: 'noaccess',
+    component: NoAccessComponent,
     data: {
       roles: [AppRoles.Read],
       pagetitle: 'Alle Klassen'
@@ -31,9 +50,17 @@ const routes: Routes = [
     }
   },
   {
+    path: 'schulfach-details',
+    component: SchulfachDetailsComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Read],
+      pagetitle: 'Alle Schulfaecher'
+    }
+  },
+  {
     path: '',
     component: HomeComponent,
-    canActivate: [AppAuthGuard],
     data: {
       roles: [AppRoles.Read],
       pagetitle: 'Home'

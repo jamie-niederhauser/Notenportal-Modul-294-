@@ -34,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { SchuelerDetailsComponent } from './components/schueler-details/schueler-details.component';
 import { SchulfachDetailsComponent } from './components/schulfach-details/schulfach-details.component';
+import { NoAccessComponent } from './pages/no-access/no-access.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV-Realm',
@@ -69,7 +70,8 @@ export function storageFactory(): OAuthStorage {
     ConfirmDialogComponent,
     KlasseDetailsComponent,
     SchuelerDetailsComponent,
-    SchulfachDetailsComponent
+    SchulfachDetailsComponent,
+    NoAccessComponent
   ],
   imports: [
     BrowserModule,
@@ -88,8 +90,10 @@ export function storageFactory(): OAuthStorage {
     MatIconModule,
     MatToolbarModule,
     HttpClientModule,
+    MatIconModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',

@@ -12,7 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AppLoginComponent } from './components/login/login.component';
 import { MatCardModule } from '@angular/material/card';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [

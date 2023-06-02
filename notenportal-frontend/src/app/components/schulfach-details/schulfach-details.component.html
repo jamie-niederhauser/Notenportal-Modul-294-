@@ -1,1 +1,14 @@
-<p>schulfach-details works!</p>
+<div>
+  <form (ngSubmit)="save(schulfachForm.value)" [formGroup]="schulfachForm">
+
+    <mat-form-field>
+      <mat-label>Schulfach</mat-label>
+      <input appAutofocus formControlName="schulfach" matInput maxlength="200" required>
+  </mat-form-field>
+
+  <button mat-flat-button color="disabled" type="reset" (click)="back()">Abbrechen</button>
+  <button mat-raised-button color="primary" type="submit">Speichern</button>
+
+</form>
+</div>
+

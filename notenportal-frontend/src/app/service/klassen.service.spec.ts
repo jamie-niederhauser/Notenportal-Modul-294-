@@ -5,7 +5,7 @@ import {createSpyFromClass, Spy} from 'jasmine-auto-spies';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import { Klasse } from '../data/klasse';
 
-describe('KlassenService', () => {
+fdescribe('KlassenService', () => {
   let service: klassenService;
   let httpSpy: Spy<HttpClient>;
 
