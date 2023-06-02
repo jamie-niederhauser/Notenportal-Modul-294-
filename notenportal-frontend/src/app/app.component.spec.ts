@@ -1,37 +1,44 @@
-import {Component} from '@angular/core';
-import {AppAuthService} from './service/app.auth.service';
-import {OAuthService} from 'angular-oauth2-oidc';
-import {TranslateService} from '@ngx-translate/core';
-import {DateAdapter} from '@angular/material/core';
+import {TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppComponent} from './app.component';
+import {AuthConfig, OAuthModule} from 'angular-oauth2-oidc';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {authConfig} from './app.module';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { AppLoginComponent } from './components/login/login.component';
+import { MatCardModule } from '@angular/material/card';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-})
-export class AppComponent {
-  public constructor(private authService: AppAuthService, private dateAdapter: DateAdapter<any>,
-                     public oauthService: OAuthService, public translate: TranslateService) {
-    translate.addLangs(['en', 'de_CH']);
-    translate.setDefaultLang('en');
-    this.dateAdapter.setLocale('en');
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        OAuthModule.forRoot({resourceServer: {sendAccessToken: true}}),
+        MatMomentDateModule,
+        HttpClientModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        MatCardModule
+      ],
+      providers: [
+        //{provide: HttpClient, useValue: createSpyFromClass(HttpClient)},
+        {provide: AuthConfig, useValue: authConfig}],
+      declarations: [
+        AppComponent,
+        AppLoginComponent
+      ],
+    }).compileComponents();
+  });
 
-    const savedLang = localStorage.getItem('demoapp.lang');
-    if (savedLang) {
-      this.setLanguage(savedLang);
-      translate.currentLang = savedLang;
-    } else {
-      translate.currentLang = 'en';
-    }
-  }
-
-  logout() {
-    this.authService.logout();
-  }
-
-  setLanguage(lang: string) {
-    this.translate.use(lang);
-    this.dateAdapter.setLocale(lang);
-    localStorage.setItem('demoapp.lang', lang);
-  }
-}
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+});

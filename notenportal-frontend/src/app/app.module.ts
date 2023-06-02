@@ -20,7 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
-
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { environment } from './environments/environment';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { AppAuthGuard } from './guard/app.auth.guard';
@@ -33,6 +33,7 @@ import { KlasseDetailsComponent } from './components/klasse-details/klasse-detai
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { SchuelerDetailsComponent } from './components/schueler-details/schueler-details.component';
+import { SchulfachDetailsComponent } from './components/schulfach-details/schulfach-details.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV-Realm',
@@ -67,7 +68,8 @@ export function storageFactory(): OAuthStorage {
     IsInRolesDirective,
     ConfirmDialogComponent,
     KlasseDetailsComponent,
-    SchuelerDetailsComponent
+    SchuelerDetailsComponent,
+    SchulfachDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,9 @@ export function storageFactory(): OAuthStorage {
     MatCardModule,
     MatChipsModule,
     MatTableModule,
+    MatMenuModule,
     MatListModule,
+    MatMomentDateModule,
     AppRoutingModule,
     MatMenuModule,
     MatIconModule,

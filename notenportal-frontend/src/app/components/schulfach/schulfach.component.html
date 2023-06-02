@@ -1,1 +1,35 @@
-<p>schulfach works!</p>
+<div>
+
+  <table mat-table [dataSource]="schulfachDataSource">
+
+    <mat-text-column name="schulfach" headerText="Schulfach">
+    </mat-text-column>
+
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef class="w-75 th-center" mat-header-cell></th>
+      <td *matCellDef="let element" mat-cell style="text-align: end">
+        <button
+          *isInRoles="[roles.Update]"
+          (click)="edit(element)"
+          color="primary" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          *isInRoles="[roles.Admin]"
+          (click)="delete(element)"
+          color="primary" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr  *matHeaderRowDef="columns" mat-header-row></tr>
+    <tr  *matRowDef="let row; columns: columns;" mat-row></tr>
+
+  </table>
+
+  <button *isInRoles="[roles.Admin]"(click)="add()"mat-raised-button color="primary">
+    Schueler erfassen
+  </button>
+
+</div>

@@ -9,6 +9,7 @@ import { NotenComponent } from './components/noten/noten.component';
 import { KlasseDetailsComponent } from './components/klasse-details/klasse-details.component';
 import { SchuelerComponent } from './components/schueler/schueler.component';
 import { SchuelerDetailsComponent } from './components/schueler-details/schueler-details.component';
+import { SchulfachComponent } from './components/schulfach/schulfach.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,24 @@ const routes: Routes = [
     data: {
       roles: [AppRoles.Read],
       pagetitle: 'Alle Klassen'
+    }
+  },
+  {
+    path: 'schulfach',
+    component: SchulfachComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Read],
+      pagetitle: 'Alle Schulfaecher'
+    }
+  },
+  {
+    path: '',
+    component: HomeComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Read],
+      pagetitle: 'Home'
     }
   },
   {
