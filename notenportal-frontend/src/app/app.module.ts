@@ -12,7 +12,13 @@ import { NotenComponent } from './components/noten/noten.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { environment } from './environments/environment';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
@@ -21,6 +27,9 @@ import { AppAuthService } from './service/app.auth.service';
 import { IsInRolesDirective } from './directives/is-in-roles.dir';
 import { HttpClient, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { KlasseDetailsComponent } from './components/klasse-details/klasse-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV-Realm',
@@ -52,15 +61,25 @@ export function storageFactory(): OAuthStorage {
     SchuelerComponent,
     SchulfachComponent,
     NotenComponent,
-    IsInRolesDirective
+    IsInRolesDirective,
+    ConfirmDialogComponent,
+    KlasseDetailsComponent
   ],
   imports: [
     BrowserModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatFormFieldModule,
     MatCardModule,
     MatChipsModule,
+    MatTableModule,
+    MatListModule,
     AppRoutingModule,
+    MatMenuModule,
     MatIconModule,
+    MatToolbarModule,
     HttpClientModule,
+    ReactiveFormsModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'

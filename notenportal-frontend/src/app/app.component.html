@@ -1,3 +1,31 @@
-<main>
-  <router-outlet></router-outlet>
-</main>
+<mat-toolbar>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item
+      [routerLink]="['']">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item
+      routerLink="/klasse">
+      <mat-icon>Home </mat-icon>
+      <span>Klasse</span>
+    </button>
+    <button mat-menu-item
+      routerLink="/noten">
+      <mat-icon>Noten </mat-icon>
+      <span>Noten</span>
+    </button>
+  </mat-menu>
+
+  <span>Notenportal</span>
+
+  <span class="toolbar__spacer"></span>
+
+  <span class="toolbar__spacer"></span>
+</mat-toolbar>
+<app-login></app-login>
+<router-outlet></router-outlet>

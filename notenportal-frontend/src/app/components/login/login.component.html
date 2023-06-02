@@ -1,5 +1,5 @@
-<mat-card>
-  <mat-card-content>Melden sie sich an</mat-card-content>
+<mat-card >
+  <mat-card-content> <h1> Melden sie sich an </h1> </mat-card-content>
   <div *ngIf="isAuthenticated()">
     <mat-chip>{{username}}</mat-chip>
     <button (click)="logout()" color="warn" mat-button>
@@ -17,7 +17,3 @@
 </mat-card>
 
 
-
-<div>
-  <button routerLink="/Home">weiter</button>
-</div>

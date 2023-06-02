@@ -1,35 +1,37 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import {Component} from '@angular/core';
+import {AppAuthService} from './service/app.auth.service';
+import {OAuthService} from 'angular-oauth2-oidc';
+import {TranslateService} from '@ngx-translate/core';
+import {DateAdapter} from '@angular/material/core';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  });
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  public constructor(private authService: AppAuthService, private dateAdapter: DateAdapter<any>,
+                     public oauthService: OAuthService, public translate: TranslateService) {
+    translate.addLangs(['en', 'de_CH']);
+    translate.setDefaultLang('en');
+    this.dateAdapter.setLocale('en');
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    const savedLang = localStorage.getItem('demoapp.lang');
+    if (savedLang) {
+      this.setLanguage(savedLang);
+      translate.currentLang = savedLang;
+    } else {
+      translate.currentLang = 'en';
+    }
+  }
 
-  it(`should have as title 'notenportal-frontend'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('notenportal-frontend');
-  });
+  logout() {
+    this.authService.logout();
+  }
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('notenportal-frontend app is running!');
-  });
-});
+  setLanguage(lang: string) {
+    this.translate.use(lang);
+    this.dateAdapter.setLocale(lang);
+    localStorage.setItem('demoapp.lang', lang);
+  }
+}
