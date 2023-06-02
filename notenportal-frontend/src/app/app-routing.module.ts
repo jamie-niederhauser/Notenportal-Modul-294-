@@ -26,6 +26,15 @@ const routes: Routes = [
       roles: [AppRoles.Read],
       pagetitle: 'Alle Noten'
     }
+  },{
+    path: 'klasse/:id',
+    pathMatch: 'full',
+    component: KlasseDetailsComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Update],
+      pagetitle: 'Klasse bearbeiten'
+    }
   },
   {
     path: 'klasse-details',

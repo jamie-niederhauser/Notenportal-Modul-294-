@@ -1,8 +1,9 @@
-<div> <form (ngSubmit)="save(klassForm.value)" [formGroup]="klassForm!">
+<div>
+  <form (ngSubmit)="save(klassForm.value)" [formGroup]="klassForm">
 
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input type="text" formControlName="klassenname" matInput required />
+    <mat-form-field>
+      <mat-label>Klassenname</mat-label>
+      <input appAutofocus formControlName="klassenname" matInput maxlength="200" required>
   </mat-form-field>
 
   <button mat-flat-button color="disabled" type="reset" (click)="back()">Abbrechen</button>

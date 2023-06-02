@@ -39,7 +39,7 @@ export class KlasseComponent implements OnInit{
   }
 
   async edit (obj:Klasse) {
-    await this.router.navigate(['klasse-details', obj.id])
+    await this.router.navigate(['klasse', obj.id])
   }
 
 
